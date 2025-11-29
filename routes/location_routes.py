@@ -1,0 +1,25 @@
+from flask import Blueprint
+
+import controllers
+
+location = Blueprint("location", __name__)
+
+@location.route('/location', methods=['POST'])
+def add_location_route():
+    return controllers.add_location()
+
+@location.route('/locations', methods=['GET'])
+def get_all_locations_route():
+    return controllers.get_all_locations()
+
+@location.route('/location/<location_id>', methods=['GET'])
+def get_location_by_id_route(location_id):
+    return controllers.get_location_by_id(location_id)
+
+@location.route('/location/<location_id>', methods=['PUT'])
+def update_location_by_id_route(location_id):
+    return controllers.update_location_by_id(location_id)
+
+@location.route('/location/delete/<location_id>', methods=['DELETE'])
+def delete_location_by_id_route(location_id):
+    return controllers.delete_location_by_id(location_id)
